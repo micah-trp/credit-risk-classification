@@ -2,13 +2,7 @@
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
-
-* Explain the purpose of the analysis.  
 The purpose of this analysis was to use a dataset of historical lending activity from a peer-to-peer lending service company and build a model that can identify the creditworthiness of borrowers by predicting if they are healthy loan or a high-risk loans.
-
-
-* Explain what financial information the data was on, and what you needed to predict.
 
 The model was built using a dataset of `77,536` observations of historical lending data with the following variables: 
   
@@ -23,40 +17,25 @@ The model was built using a dataset of `77,536` observations of historical lendi
 
 Variable 1 - 7 were our independent variables in the model.
 Variable 8: "loan_status" was our dependent variable in the model - with classification of (0)healthy Loan or (1)High-Risk loan. 
-We were required to use the information of the data to build a model and predict whether a customer was (0) or (1) in this context.
+We were required to use the information of the data to build a model and `predict whether a loan was (0) "Healthy" or (1) "High Risk"` in this context.
    
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-
 In the provided data there were `77,536` with `2,500 observations / 3.22%` as High Risk and the remaining `75,036 observationsor 76.78%` as Healthy.
 Therefore it is noted that the model may include some form of class imbalance- as there a many more instances of class (0) than class (1).
 
-* Describe the stages of the machine learning process you went through as part of this analysis.
+## Stages of Building the model.
 
-The stages of machine learning for logistic regression typically involve the following steps:
+1. Data Collection: Data was provided in csv format.
 
-1. Data Collection: Gather the relevant data for your problem domain. This may involve acquiring data from various sources, such as databases, APIs, or manual data entry.
+2. Data Preprocessing: Data was taken at import value in this case.
 
-2. Data Preprocessing: Clean and preprocess the collected data to ensure its quality and compatibility with the logistic regression model. This step may involve handling missing values, removing duplicates, transforming variables, and normalizing or standardizing the data.
+3. Data Partitioning: Split the preprocessed data into two or three subsets: a training set and a test set. 
 
-3. Data Partitioning: Split the preprocessed data into two or three subsets: a training set, a validation set (optional), and a test set. The training set is used to train the logistic regression model, the validation set is used for model selection or hyperparameter tuning, and the test set is used to evaluate the final model's performance.
+4. Model Training: Feed the training data into the logistic regression algorithm to estimate the model's coefficients or weights.
 
-4. Model Training: Feed the training data into the logistic regression algorithm to estimate the model's coefficients or weights. The algorithm adjusts these weights iteratively to minimize the difference between predicted probabilities and actual outcomes in the training set.
-
-5. Model Evaluation: Assess the performance of the trained model using evaluation metrics such as accuracy, precision, recall, F1 score, or area under the ROC curve (AUC-ROC). This evaluation is typically done on the validation set, and the model's hyperparameters can be tuned based on these results.
-
-6. Model Optimization: Fine-tune the logistic regression model by adjusting its hyperparameters, such as learning rate, regularization strength, or convergence criteria. This step aims to improve the model's performance by finding the optimal configuration of these parameters.
-
-7. Model Testing: Once the model is trained and optimized, evaluate its performance on the independent test set. This step provides an unbiased assessment of the model's ability to generalize to unseen data. The test set results can guide decisions regarding the model's deployment and its effectiveness for making predictions on new instances.
-
-8. Deployment: Deploy the logistic regression model into a production environment, where it can be used to predict outcomes for new data instances. This may involve integrating the model into an application, system, or workflow, depending on the specific use case.
-
-9. Monitoring and Maintenance: Continuously monitor the performance of the deployed logistic regression model in the real-world setting. Retrain or update the model periodically to ensure its accuracy and relevance as new data becomes available or as the problem domain evolves.
-
-These stages provide a general framework for applying logistic regression in a machine learning context. However, the exact steps and their order may vary depending on the specific problem, dataset, and requirements of the application.
+5. Model Evaluation: Assess the performance of the trained model using evaluation metrics such as the confusion matrix,  accuracy, precision, recall, F1 score.
 
 
-
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+## Methods Used
 
 Logisitic regression was used for predicting the binary outcomes (0 - 1). This type of model calculates the probabliity of a positiv outcome based on a linear combination of independent variables.  
 By applying this function, the linear combination is transformed into a range between 0 and 1 representing the probabiolity.   
@@ -78,7 +57,6 @@ Based on the provided information, here's a summary analysis:
    - The model's predictions were compared with the actual values for both the training and testing data.
 
 3. Confusion Matrix (Test):
-   - The confusion matrix for the testing data is presented as a 2x2 array.
    - True negatives (TN) are 18,679, false negatives (FN) are 80, false positives (FP) are 67, and true positives (TP) are 558.
 
 4. Class Report (Test):
@@ -102,13 +80,14 @@ Based on the provided information, here's a summary analysis:
 7. Additional Information:
    - The classification report is provided as a dictionary format, showing precision, recall, f1-score, and support for each class.
 
-Overall, the logistic regression model demonstrates excellent performance in predicting loan statuses. It achieves high accuracy and shows good precision, recall, and f1-scores for both classes. However, due to the class imbalance, it's important to consider additional techniques like oversampling or undersampling to handle the imbalance effectively and ensure the model's performance on both classes.
-
 
 ## Summary
 
-Summarise the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+Overall, the logistic regression model demonstrates excellent performance in predicting loan statuses.  
+It achieves high accuracy and shows good precision, recall, and f1-scores for both classes. 
+However, due to the class imbalance, it's important to consider additional techniques like oversampling or undersampling to handle the imbalance effectively and ensure the model's performance on both classes.  
+  
+- If the sponsor of the application has a higher risk appetite then this model may not be best optimised yet as it predicts a higher proportion of "False Negatives" and fails to identify "High Risk" loans.
+Further adjustment to the model would be required to take into account the class imbalance.  
 
-If you do not recommend any of the models, please justify your reasoning.
+- If the sponsor of the application has a lower risk appetitite then the model is recommended as it performs with high accuracy.  
